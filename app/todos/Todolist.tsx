@@ -6,27 +6,26 @@ import React from 'react'
 
 const fetchTodos = async () => {
     const response = await fetch('https://jsonplaceholder.typicode.com/todos')
-    const todos:Todo[] = await response.json()
-    // console.log("🚀 ~ file: Todolist.tsx:10 ~ fetchTodos ~ this is todoss:", todos)
+    const todos: Todo[] = await response.json()
     return todos
-}   
+}
 
 
 async function Todolist() {
     const todos = await fetchTodos()
-  return (
-    <>
-    {todos.map((todo) =>  (
-        <p key={todo.id}>
-            <Link href={`/todos/${todo.id}`}>
-                Todo: {todo.id}
-            </Link>
+    return (
+        <>
+            {todos.map((todo) => (
+                <p key={todo.id}>
+                    <Link href={`/todos/${todo.id}`}>
+                        Todo: {todo.id}
+                    </Link>
 
-        </p>
-        ))
-    }
-    </>
-  )
+                </p>
+            ))
+            }
+        </>
+    )
 }
 
 export default Todolist
